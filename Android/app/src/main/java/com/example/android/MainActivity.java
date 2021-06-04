@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     String firstName;
     String lastName;
 
-    private TextView fn;
-    private TextView ln;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +25,36 @@ public class MainActivity extends AppCompatActivity {
 
         firstNameInput = (EditText) findViewById(R.id.firstName);
         lastNameInput = (EditText) findViewById(R.id.lastName);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "onStart", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "onStop", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getApplicationContext(), "onDestroy", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "onPause", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), "onResume", Toast.LENGTH_LONG).show();
     }
 
     public void goToNextPage(View view) {
@@ -38,10 +66,13 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("First name is : " + firstName);
         System.out.println("Last name is : " + lastName);
 
-        fn = (TextView) findViewById(R.id.fn);
-        ln = (TextView) findViewById(R.id.ln);
+        TextView fn = (TextView) findViewById(R.id.fn);
+        TextView ln = (TextView) findViewById(R.id.ln);
         fn.setText("First name is : " + firstName);
         ln.setText("Last name is : " + lastName);
-
     }
+
+//    private void onlyTest() {
+//        R.string.app_name
+//    }
 }
